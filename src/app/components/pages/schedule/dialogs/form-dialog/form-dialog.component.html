@@ -1,0 +1,57 @@
+<div class="addContainer">
+  <div class="modalHeader">
+    <div class="editRowModal">
+      <div class="modalHeader clearfix">
+        <div class="modal-about">
+          <div class="font-weight-bold p-t-5 p-l-10 font-17">
+           Schedule {{dialogTitle}}</div>
+        </div>
+      </div>
+    </div>
+    <button mat-icon-button (click)="dialogRef.close()" aria-label="Close dialog">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <div mat-dialog-content>
+    <form class="register-form m-4" [formGroup]="calendarForm">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 ">
+              <mat-form-field class="example-full-width mb-3" appearance="outline">
+                <mat-label>{{'SCHEDULE.LIST.SCHEDULE' | translate}}</mat-label>
+                <input matInput formControlName="schedule_name" readonly >
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row" *ngIf="calendar.schedule_view == 'All'">
+              <p>{{calendar.schedule_name}} is Scheduled</p>
+          </div>
+      <div class="row" *ngIf="calendar.schedule_view != 'All'">
+        <label>Select Instructor</label>
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 ">
+          <ul style="list-style: none;" *ngFor="let timeDt of timeArray; let i=index">
+              <li>{{timeDt.range}}</li>
+                <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" style="margin: 5px 0 !important;" *ngIf="timeDt.employeeList.length>0">
+                  <mat-radio-button class="example-margin" style="padding: 5px;margin-left: 16px;" *ngFor="let empdt of timeDt.employeeList" [value]="empdt" [checked]="empdt.checked" color="primary"
+                  (change)="instructorChange($event,timeDt)">
+                    {{empdt.name}}
+                  </mat-radio-button>
+                </mat-radio-group>
+                <li *ngIf="timeDt.employeeList.length == 0">
+                  <span style="padding: 5px;margin-left: 16px;"> -- </span>
+                </li>
+            </ul>
+        </div>
+      </div>
+      <br/>
+      <div class="row" *ngIf="calendar.schedule_view != 'All'">
+        <div class="col-xl-10 col-lg-10 col-md-12 col-sm-12">
+          <div class="example-button-row">
+            <button mat-raised-button color="primary" [type]="submit" 
+              (click)="setStudentScheduleInfo()">{{'BUTTON.ADD-BTN' | translate}}</button>
+            <button mat-raised-button color="warn" (click)="dialogRef.close()" tabindex="-1">{{'BUTTON.CANCEL-BTN' | translate}}</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

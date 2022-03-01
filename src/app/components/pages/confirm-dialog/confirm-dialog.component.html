@@ -1,0 +1,102 @@
+<div mat-dialog-title id="printable">
+    <div>
+<img height="51px" src="assets/img/Amano_Original_Logo-Revised ver 1.00.png" alt="Logo"> Amano Payment Receipt</div>
+
+<div><p style="color: black; font-size: 12px;">NO.66-G,JALAN JU 2,TAMAN JAYA UTAMA,TELOK PANGLIMA GARANG
+,42500 TLK PANGLIMA GARANG selangor <i class='bx bxs-envelope'></i> info@smamano.my</p></div>
+</div>
+
+<mat-dialog-content id="printable2">
+<div class="center" >
+<table>
+    <tr >
+        <td style="width:220px">
+            Name : 
+        </td>
+        <td>
+            {{data.name}}
+        </td>
+    </tr>
+    <td>
+        E-mail : 
+    </td>
+    <td>
+        {{data.email_id}}
+    </td>
+    <tr>
+        <td>
+            Contact Number :
+        </td>
+        <td>
+            {{data.mobile_number}}
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Enrollment Number :
+        </td>
+        <td>
+            {{data.enrollment_no}}
+        </td>
+    </tr>
+    <!-- <tr>
+        <td>
+            Transaction Number
+        </td>
+        <td>{{data.}}</td>
+    </tr> -->
+    <!-- <tr>
+        <td>
+            Transaction Amount
+        </td>
+        <td>
+            {{pack.final_package_price}}
+        </td>
+    </tr> -->
+    <!-- <tr>
+       <td> Payment method </td>
+       <td>
+        {{pack.package_phase_desc_english}}
+       </td>
+    </tr> -->
+    <!-- <tr>
+        <td>
+            Order Number :
+        </td>
+        <td>{{data.}}</td>
+    </tr> -->
+    <!-- <tr>
+        <td>
+            Authorsed Date / Time :
+        </td>
+        <td> 
+            {{data.}}
+        </td>
+    </tr> -->
+    <!-- <tr>
+       <td> Approval Code : </td>
+       <td>{{data.}}</td>
+    </tr>
+    <tr>
+        <td>
+            Service Items:
+        </td>
+        <td>
+            {{data.}}
+        </td>
+    </tr> -->
+    <tr>
+        <td>
+            Liciences class:
+        </td>
+        <td>
+            {{pack}}
+        </td>
+    </tr>
+    <tr></tr>
+</table>
+</div>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-flat-button color="primary" (click)="print()" >PRINT </button>
+</mat-dialog-actions>

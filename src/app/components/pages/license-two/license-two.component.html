@@ -1,0 +1,131 @@
+<div class="container" *ngIf="!buyPage">
+    <h4 class="pt-70">Select License</h4>
+    <div class="pt-30">
+        <form [formGroup]="licenseFormGroup">
+            <div class="row">
+                <div class="col-lg-4">
+                    <mat-form-field appearance="outline">
+                        <mat-label>{{'SELECT-LICENSE.LIST.EXISTING-LICENSE' | translate}}</mat-label>
+                        <input matInput matTooltip="" name="existLicience" [(ngModel)]="licenseInfo.existingLicense_id"
+                            [matAutocomplete]="autobinding" [dataList]="filterExistingLic"
+                            formControlName="ExistingLicense" [autoCompleteDirective]="translateVal"
+                            (sendVal)="existingLicList = $event" (datavalue)="licenseInfo.existingLicense_id=$event.id">
+                        <mat-autocomplete #autobinding="matAutocomplete" [displayWith]="displayfn.bind(this)">
+                            <mat-option *ngFor="let option of existingLicList" [value]="option.id">
+                                {{option[translateVal]}}
+                            </mat-option>
+                        </mat-autocomplete>
+                        <!-- <mat-error *ngIf="validate2.EmerContactName.touched && validate2.EmerContactName.invalid">
+                    Enter ValidEmergency Contact Name
+                </mat-error> -->
+                    </mat-form-field>
+                </div>
+                <div class="col-lg-4">
+                    <mat-form-field appearance="outline">
+                        <mat-label>{{'SELECT-LICENSE.LIST.EXPIRYDATE' | translate}}</mat-label>
+                        <input matInput [matDatepicker]="picker" (click)="picker.open()" [(ngModel)]="licenseInfo.expiry_date"
+                            formControlName="LicenseExpiryDate"
+                            [required]="licenseInfo.existingLicense_id?true:false" />
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                        <mat-error *ngIf="validate.LicenseExpiryDate.touched && validate.LicenseExpiryDate.invalid">
+                            Enter License Expiry Date
+                        </mat-error>
+                    </mat-form-field>
+
+                </div>
+                <div class="col-lg-4">
+                    <div class="col-12">
+                        <mat-form-field appearance="outline">
+                            <mat-label>{{'SELECT-LICENSE.LIST.EXISTING-LICENSE-FRONT'| translate}}</mat-label>
+                            <ngx-mat-file-input formControlName="existing_license_front_name"
+                                [required]="licenseInfo.existingLicense_id?true:false"
+                                (change)="onFileChangePhoto($event,'existing_license_front')" required>
+                            </ngx-mat-file-input>
+                            <mat-icon matSuffix class="mat_icon_color">cloud_upload</mat-icon>
+                            <mat-error *ngIf="licenseFormGroup.get('existing_license_front_name').hasError('required')">
+                                Upload Existing License Rear Photo
+                            </mat-error>
+                            <mat-error
+                                *ngIf="licenseFormGroup.get('existing_license_front_name').hasError('maxContentSize')">
+                                The total size must not exceed 4mb
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="col-12">
+                        <mat-form-field appearance="outline">
+                            <mat-label>{{'SELECT-LICENSE.LIST.EXISTING-LICENSE-REAR'| translate}}</mat-label>
+                            <ngx-mat-file-input formControlName="existing_license_rear_name"
+                                [required]="licenseInfo.existingLicense_id?true:false" placeholder="test"
+                                (change)="onFileChangePhoto($event,'existing_license_rear')" required>
+                            </ngx-mat-file-input>
+                            <mat-icon matSuffix class="mat_icon_color">cloud_upload</mat-icon>
+                            <mat-error *ngIf="licenseFormGroup.get('existing_license_rear_name').hasError('required')">
+                                Upload Existing License Rear Photo
+                            </mat-error>
+                            <mat-error
+                                *ngIf="licenseFormGroup.get('existing_license_rear_name').hasError('maxContentSize')">
+                                The total size must not exceed 4mb
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-2">
+                <mat-label class="col-lg-4">{{'SELECT-LICENSE.LIST.CDL-LICENSE'| translate}}</mat-label>
+                <div class="col-lg-8">
+                    <mat-radio-group aria-label="Select an option" (change)=" getLicenceListForCustomer();"
+                        name="cdlLic" formControlName="cdl_licence">
+                        <mat-radio-button value="1">{{'SELECT-LICENSE.LIST.CDL-YES'| translate}}</mat-radio-button>
+                        <mat-radio-button value="0">{{'SELECT-LICENSE.LIST.CDL-NO'| translate}}</mat-radio-button>
+                    </mat-radio-group>
+                </div>
+            </div>
+            <div class="row pt-20">
+                <div class="col-lg-4 col-md-6" *ngFor="let lic of license; let i = index;">
+                    <div class="special-card">
+                        <img src="{{apiUrl}}{{lic.license_image}}" alt="Images">
+                        <div class="content">
+                            <h3>{{lic.license_class}}</h3>
+                            <div *ngIf="lan" [innerHtml]="lic.license_desc_english"></div>
+                            <div *ngIf="!lan" [innerHtml]="lic.license_desc_malay"></div>
+                            <p>{{'licence2.AGELIMIT' | translate}} - {{lic.minimum_age}}</p>
+                            <mat-checkbox class="example-margin" (change)="packageChecked($event.checked,lic.id)"
+                                [checked]='lic.checked'></mat-checkbox>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mb-3">
+                <button mat-raised-button color="primary" style="width:100px" (click)="proceed()">{{'licence2.PROCEED' |
+                    translate}}</button>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="container" *ngIf="buyPage">
+    <div class="text-left mb-3" pt-5>
+        <button mat-raised-button color="primary" style="width:100px" (click)="buyPage=false">{{'BUTTON.BACK-BTN' |
+            translate}}</button>
+    </div>
+    <div class="row pt-45 pb-20">
+        <div class="col-lg-4 col-md-6" *ngFor="let pack of package">
+            <div class="service-card1">
+                <!-- <img src="{{package.package_image}}" alt="Images"> -->
+                <h3><a>{{pack.package_offers}}</a></h3>
+                <p>{{pack.package_english}} - ${{pack.final_package_price}}</p>
+                <span style="text-decoration: line-through;">${{pack.package_price}}</span>
+                <p>({{pack.promo_discount}}% - off)</p>
+                <!-- <a class="services-more">Buy
+                       </a> -->
+                <button mat-raised-button color="primary" (click)="receipt(pack)">BUY</button>
+                <div class="services-card-bottom"></div>
+            </div>
+        </div>
+
+    </div>
+</div>

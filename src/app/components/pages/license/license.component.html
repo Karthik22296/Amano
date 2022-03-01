@@ -1,0 +1,17 @@
+<div class="special-area pt-4 ">
+    <div class="container">
+        <div class="row pt-20" >
+            <div class="col-lg-4 col-md-6" *ngFor="let lic of license; let i = index;">
+                <div  class="special-card">
+                    <img src="{{apiUrl}}{{lic.license_image}}" alt="Images">
+                    <div class="content" (click)="gotoSignIn()">
+                        <h3>{{lic.license_class}}</h3>
+                        <div *ngIf="lan" [innerHtml]="lic.license_desc_english"></div>
+                        <div *ngIf="!lan" [innerHtml]="lic.license_desc_malay"></div>
+                        <p>{{'licence2.AGELIMIT' | translate}}  - {{lic.minimum_age}}</p>                   
+                    </div>   
+                </div>
+            </div>
+          </div>
+    </div>
+</div>

@@ -1,0 +1,122 @@
+<section class="content">
+  <div class="container-fluid">
+    <div class="block-header">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <ul class="breadcrumb breadcrumb-style ">
+            <li class="breadcrumb-item">
+              <h4 class="page-title">{{'TIMELINE.TITLE' | translate}}</h4>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-2">
+        <mat-form-field class="example-full-width mb-3" appearance="outline">
+          <mat-label>{{'SCHEDULE.TRANSACTIONNUMBER' | translate}}</mat-label>
+          <input type="text" matInput [formControl]="enrollment_no" [matAutocomplete]="autoTran">
+          <mat-autocomplete #autoTran="matAutocomplete" [displayWith]="displayFnTransactionNumber"
+            (optionSelected)="checkStudentTimeLine($event)">
+            <mat-option *ngFor="let option of tranNumberList | async" [value]="option">
+              {{option.enrollment_no}}
+            </mat-option>
+          </mat-autocomplete>
+          <mat-error *ngFor="let validation of validation_msgs.enrollment_no">
+            <div *ngIf="enrollment_no.hasError(validation.type)">
+              {{validation.message}}
+            </div>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-2">
+        <mat-form-field class="example-full-width mb-3 " appearance="outline">
+          <mat-label>{{'SCHEDULE.LICENCE' | translate}}</mat-label>
+          <input type="text" matInput disabled=true [(ngModel)]="LicenseData">
+
+        </mat-form-field>
+      </div>
+    </div>
+    <div *ngIf="statusDone" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <div class="card">
+        <div class="body">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-10">
+                <ul class="left-timeline">
+                  <li *ngFor="let statusdt of statusList">
+                    <div (click)="updateStatus(statusdt.id,deleteRecord)">
+                      <time class="left-time">
+                        <span class="hidden" *ngIf="statusdt.scheduled_date">{{statusdt.scheduled_date | date:
+                          'dd-MM-YYYY'}}</span>
+                        <span class="hidden" *ngIf="statusdt.completed_date">{{statusdt.completed_date | date:
+                          'dd-MM-YYYY'}}</span>
+                      </time>
+                      <div class="left-icon" [ngClass]="statusdt.BColor ? 'timeline-green' : 'timeline-orange'">
+                        <mat-icon style="line-height: 1.7 !important;color: white;">done</mat-icon>
+                      </div>
+                      <div *ngIf="statusdt.id != 15" [ngClass]="statusdt.BColor ? 'progline-green' : 'progline-orange'">
+                      </div>
+                      <div class="left-label empty" [ngClass]="statusdt.BColor ? 'bck-color' : ''">
+                        <span>{{statusdt.status}}</span>
+                        <div [ngClass]="statusdt.BColor ? 'bck-right-color' : 'bck-orange-color'"></div>
+                      </div>
+                    </div>
+
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<ng-template #deleteRecord let-modal>
+  <div class="modal-header deleteRowModal">
+  <h4 class="modal-title" id="modal-basic-title"> <div class="modal-header ">
+      <div class="modal-about">
+          <div class="font-weight-bold p-t-10 font-17">
+             Update Status</div>
+      </div>
+      </div>
+  </h4>
+  <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true"><i class="material-icons">close</i></span>
+  </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="statusUpdateForm">
+      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Status</mat-label>
+          <input matInput formControlName="status"  readonly>
+        </mat-form-field>
+      </div>
+      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2" *ngIf="statusDetail.test_flag == 'T' || statusDetail.test_flag == 'R'">
+        <mat-label>Result</mat-label>
+        <mat-radio-group formControlName="result">
+            <mat-radio-button class="example-margin" value="Pass">
+                Pass
+            </mat-radio-button>
+            <mat-radio-button class="example-margin" value="Fail" >
+                Fail
+            </mat-radio-button>
+        </mat-radio-group>
+      </div>
+      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Remarks</mat-label>
+          <textarea matInput formControlName="remarks"></textarea>
+        </mat-form-field>
+      </div>
+      <div class="modal-footer">
+        <div class="button-demo">
+            <button mat-raised-button type="submit" color="primary" (click)="updateStudentStatusInfo();modal.close()">{{'BUTTON.EDIT-BTN' | translate}}</button>
+            <button mat-button type="button" (click)="modal.close()">{{'BUTTON.CANCEL-BTN' | translate}}</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</ng-template>

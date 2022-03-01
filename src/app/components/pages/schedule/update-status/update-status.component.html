@@ -1,0 +1,38 @@
+<ng-template #deleteRecord let-modal>
+    <!-- <div class="modal-header deleteRowModal">
+      <h4 class="modal-title" id="modal-basic-title">
+        <div class="modal-header ">
+          <div class="modal-about">
+            <div class="font-weight-bold p-t-10 font-17">
+              {{'STUDENT-REGISTRATION.UPDATESTATUS' | translate}}</div>
+          </div>
+        </div>
+      </h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true"><i class="material-icons">close</i></span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form class="register-form" [formGroup]="updateStatusForm">
+        <div class="row">
+          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+            <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label>{{'STUDENT-REGISTRATION.LIST.STATUS' | translate}}</mat-label>
+              <mat-select formControlName="status_id" required>
+                <mat-option *ngFor="let option of statusList" [value]="option.id">
+                  {{option.status}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+      </form>
+    </div> -->
+    <div class="modal-footer">
+      <div class="button-demo">
+        <button mat-raised-button type="submit" color="primary"
+          (click)="updateStudentStatusInfo();modal.close()">{{'BUTTON.EDIT-BTN' | translate}}</button>
+        <button mat-button type="button" (click)="modal.close()">{{'BUTTON.CANCEL-BTN' | translate}}</button>
+      </div>
+    </div>
+  </ng-template>

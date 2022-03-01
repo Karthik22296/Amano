@@ -1,0 +1,543 @@
+<div class="container">
+  <mat-stepper [linear]="isLinear" #stepper [orientation]="(stepperOrientation | async)!">
+    <mat-step [stepControl]="firstFormGroup">
+      <form [formGroup]="firstFormGroup">
+        <ng-template matStepLabel>{{'STUDENT-REGISTRATION.SUBTITLE1' | translate}}</ng-template>
+
+        <div class="row">
+          <div class="col-lg-4">
+            <mat-form-field appearance="outline">
+              <mat-label>{{'STUDENT-REGISTRATION.LIST.NAME' | translate}}</mat-label>
+              <input matInput pattern="[a-z A-Z]*" [maxlength]="18" [(ngModel)]="userRegistration.name"
+                formControlName="Name" required id="name" />
+              <mat-icon matSuffix>face</mat-icon>
+              <mat-hint align="end">{{userRegistration.name?.length?userRegistration.name?.length:0 }}/18</mat-hint>
+              <mat-error *ngIf="validate.Name.touched || validate.Name.invalid">
+                {{'SignUp.Name'|translate}}
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-lg-4">
+            <mat-form-field appearance="outline">
+              <mat-label>{{'STUDENT-REGISTRATION.LIST.IC-TYPE' | translate}}</mat-label>
+              <input matInput matTooltip="" name="nRCType" [(ngModel)]="userRegistration.nricType"
+                [matAutocomplete]="autobinding" [dataList]="filternrctype" formControlName="NRICType"
+                [autoCompleteDirective]="translateVal" (sendVal)="nricTypeList = $event"
+                (datavalue)="userRegistration.nricType=$event.id" required>
+              <mat-autocomplete #autobinding="matAutocomplete" (optionSelected)="nricSelected()"
+                [displayWith]="displayfn.bind(this,'NRICType')">
+                <mat-option *ngFor="let option of nricTypeList" [value]="option.id">
+                  {{option[translateVal]}}
+                </mat-option>
+              </mat-autocomplete>
+              <mat-error *ngIf="validate.NRICType.touched || validate.NRICType.invalid">
+                {{'SignUp.NricType'|translate}}
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="col-lg-4">
+            <mat-form-field appearance="outline">
+              <mat-label>{{'STUDENT-REGISTRATION.LIST.NRIC' | translate}}</mat-label>
+              <input matInput [(ngModel)]="userRegistration.nric_number" name="NRICNumber"
+                [required]="userRegistration.passport_number?false:true" formControlName="NRICNumber"
+                mask="000000-00-0000" [showMaskTyped]="true" (blur)="getNRICNumberChange()">
+              <mat-icon matSuffix>confirmation_number</mat-icon>
+              <mat-error *ngIf="validate.NRICNumber.touched || validate.NRICNumber.invalid">
+                {{'SignUp.NricNum'|translate}}
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-4">
+            <mat-form-field appearance="outline">
+              <mat-label>{{'STUDENT-REGISTRATION.LIST.PASSPORT' | translate}}</mat-label>
+              <input matInput placeholder="Passport Number" [(ngModel)]="userRegistration.passport_number"
+                formControlName="PassportNum" [required]="userRegistration.nric_number?false:true"
+                (blur)="getPassportNumberChange()" />
+              <mat-icon matSuffix>confirmation_number</mat-icon>
+              <mat-error *ngIf="validate.PassportNum.touched || validate.PassportNum.invalid">
+                {{'SignUp.PassportNum'|translate}}
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="col-lg-4">
+            <mat-form-field appearance="outline">
+              <mat-label>{{'STUDENT-REGISTRATION.LIST.DOB' | translate}}</mat-label>
+              <input matInput [matDatepicker]="picker" [(ngModel)]="userRegistration.date_of_birth"
+                formControlName="Dob" required />
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+              <mat-error *ngIf="validate.Dob.touched || validate.Dob.invalid">
+                {{'SignUp.Dob'|translate}}
+              </mat-error>
+            </mat-form-field>
+
+          </div>
+          <div class="col-lg-4">
+            <mat-form-field appearance="outline">
+              <mat-label>{{'STUDENT-REGISTRATION.LIST.GENDER' | translate}}</mat-label>
+              <mat-select placeholder="Gender" [(ngModel)]="userRegistration.gender" formControlName="Gender"
+                required="">
+                <mat-option value=""></mat-option>
+                <mat-option value="Male">Male</mat-option>
+                <mat-option value="Female">Female</mat-option>
+              </mat-select>
+              <mat-error *ngIf="validate.Gender.touched || validate.Gender.invalid">
+                {{'SignUp.Gender'|translate}}
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-4">
+            <mat-form-field appearance="outline">
+              <mat-label>{{'STUDENT-REGISTRATION.LIST.PLACEBIRTH' | translate}}</mat-label>
+              <input matInput matTooltip="" [(ngModel)]="userRegistration.placeBirth" [matAutocomplete]="autoplaceBirth"
+                [dataList]="filterplaceOfBirthList" formControlName="POB" [autoCompleteDirective]="translateVal"
+                (sendVal)="placeOfBirthList = $event" (datavalue)="userRegistration.placeBirth=$event.id" required>
+              <mat-autocomplete #autoplaceBirth="matAutocomplete" [displayWith]="displayfn.bind(this,'POB')">
+                <mat-option *ngFor="let option of placeOfBirthList" [value]="option.id">
+                  {{option[translateVal]}}
+                </mat-option>
+              </mat-autocomplete>
+              <mat-error *ngIf="validate.POB.touched || validate.POB.invalid">
+                {{'SignUp.POB'|translate}}
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="col-lg-4">
+            <mat-form-field appearance="outline">
+              <mat-label>{{'STUDENT-REGISTRATION.LIST.NATIONALITY' | translate}}</mat-label>
+              <input matInput matTooltip="" [(ngModel)]="userRegistration.nationality"
+                [matAutocomplete]="autonationality" [dataList]="filternationalityList" formControlName="Nationality"
+                [autoCompleteDirective]="'country_name'" (sendVal)="nationalityList = $event"
+                (datavalue)="userRegistration.nationality=$event.id" required>
+              <mat-autocomplete #autonationality="matAutocomplete" [displayWith]="displayfn.bind(this,'Nationality')">
+                <mat-option *ngFor="let option of nationalityList" [value]="option.id">
+                  {{option.country_name}}
+                </mat-option>
+              </mat-autocomplete>
+              <mat-error *ngIf="validate.Nationality.touched || validate.Nationality.invalid">
+                {{'SignUp.Nationality'|translate}}
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-lg-4">
+            <mat-form-field appearance="outline">
+              <mat-label>{{'STUDENT-REGISTRATION.LIST.IC-ADDRESS' | translate}}</mat-label>
+              <input matInput placeholder="" [maxlength]="25" [(ngModel)]="userRegistration.ic_address"
+                formControlName="NIRCAddr" required />
+              <mat-hint align="end">{{userRegistration.ic_address?.length?userRegistration.ic_address?.length:0 }}/25
+              </mat-hint>
+              <mat-error *ngIf="validate.NIRCAddr.touched || validate.NIRCAddr.invalid">
+                {{'SignUp.NricAdd'|translate}}
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-4">
+            <mat-form-field appearance="outline">
+              <mat-label>{{'STUDENT-REGISTRATION.LIST.ADDRESS1' | translate}}</mat-label>
+              <input matInput placeholder="" [maxlength]="25" [ngModelOptions]="{standalone: true}"
+                [(ngModel)]="userRegistration.address1" name="address1" />
+              <mat-hint align="end">{{userRegistration.address1?.length?userRegistration.address1?.length:0 }}/25
+              </mat-hint>
+            </mat-form-field>
+          </div>
+
+          <div class="col-lg-4">
+            <mat-form-field appearance="outline">
+              <mat-label>{{'STUDENT-REGISTRATION.LIST.ADDRESS2' | translate}}</mat-label>
+              <input matInput [maxLength]="25" [ngModelOptions]="{standalone: true}"
+                [(ngModel)]="userRegistration.address2" name="Address2" />
+              <mat-hint align="end">{{userRegistration.address2?.length?userRegistration.address2?.length:0 }}/25
+              </mat-hint>
+            </mat-form-field>
+          </div>
+
+          <div class="col-lg-4">
+            <mat-form-field appearance="outline">
+              <mat-label>{{'STUDENT-REGISTRATION.LIST.POSTAL-CODE' | translate}}</mat-label>
+              <input matInput matTooltip="" [(ngModel)]="userRegistration.postalCode" [matAutocomplete]="autoZip"
+                [dataList]="filterpostalCodeList" formControlName="Zip" [autoCompleteDirective]="'postal_code'"
+                (sendVal)="postalCodeList = $event" (datavalue)="userRegistration.postalCode=$event.id;" required>
+              <mat-autocomplete #autoZip="matAutocomplete" [displayWith]="displayfn.bind(this,'Zip')"
+                (optionSelected)="zipSelected()">
+                <mat-option *ngFor="let option of postalCodeList" [value]="option.id">
+                  {{option.postal_code}}
+                </mat-option>
+              </mat-autocomplete>
+              <mat-error *ngIf="validate.Zip.touched || validate.Zip.invalid">
+                {{'SignUp.PostalCode'|translate}}
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-4">
+            <mat-form-field appearance="outline">
+              <mat-label>{{'STUDENT-REGISTRATION.LIST.CITY' | translate}}</mat-label>
+              <input matInput placeholder="City" [(ngModel)]="userRegistration.city" formControlName="City" required />
+              <mat-icon matSuffix>location_city</mat-icon>
+              <mat-error *ngIf="validate.City.touched || validate.City.invalid">
+                {{'SignUp.City'|translate}}
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="col-lg-4">
+            <mat-form-field appearance="outline">
+              <mat-label>{{'STUDENT-REGISTRATION.LIST.STATE' | translate}}</mat-label>
+              <input matInput placeholder="State" [(ngModel)]="userRegistration.state" formControlName="State"
+                required />
+              <mat-icon matSuffix>domain</mat-icon>
+              <mat-error *ngIf="validate.State.touched || validate.State.invalid">
+                {{'SignUp.State'|translate}}
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-lg-4">
+            <mat-form-field appearance="outline">
+              <mat-label>{{'STUDENT-REGISTRATION.LIST.EMAIL' | translate}}</mat-label>
+              <input matInput type="email" placeholder="Email Address" [(ngModel)]="userRegistration.email_address"
+                formControlName="Email" required />
+              <mat-icon matSuffix> email</mat-icon>
+              <mat-error *ngIf="validate.Email.touched || validate.Email.invalid">
+                {{'SignUp.Email'|translate}}
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-4">
+            <mat-form-field appearance="outline">
+              <mat-label>{{'STUDENT-REGISTRATION.LIST.MOBILENO' | translate}}</mat-label>
+              <input matInput type='tel' pattern="[0-9]*" prefix='+6 ' maxlength="13" mask="0000000000000"
+                [(ngModel)]="userRegistration.mobile_number" placeholder="Mobile Number" formControlName="MobNum"
+                required />
+              <mat-icon matSuffix> phone</mat-icon>
+              <mat-error *ngIf="validate.MobNum.touched || validate.MobNum.invalid">
+                {{'SignUp.Mob'|translate}}
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-lg-4">
+            <mat-form-field appearance="outline">
+              <mat-label>{{'STUDENT-REGISTRATION.LIST.RACE' | translate}}</mat-label>
+              <input matInput matTooltip="" [(ngModel)]="userRegistration.race" [matAutocomplete]="autoRace"
+                [dataList]="filterraceList" formControlName="Race" [autoCompleteDirective]="translateVal"
+                (sendVal)="raceList = $event" (datavalue)="userRegistration.race=$event.id">
+              <mat-autocomplete #autoRace="matAutocomplete" [displayWith]="displayfn.bind(this,'Race')">
+                <mat-option *ngFor="let option of raceList" [value]="option.id">
+                  {{option[translateVal]}}
+                </mat-option>
+              </mat-autocomplete>
+              <mat-error *ngIf="validate.Race.touched || validate.Race.invalid">
+                {{'SignUp.Race'|translate}}
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-lg-4" *ngIf="userRegistration.race==4">
+            <mat-form-field appearance="outline">
+              <mat-label>{{'STUDENT-REGISTRATION.LIST.OTHERRACE' | translate}}</mat-label>
+              <input matInput placeholder="City" [(ngModel)]="userRegistration.otherRace" formControlName="OtherRace" required />
+              <mat-error *ngIf="validate.City.touched || validate.City.invalid">
+                {{'SignUp.City'|translate}}
+              </mat-error>
+              
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="text-end">
+          <button mat-raised-button color="primary" (click)="show()" matStepperNext>{{'BUTTON.NEXT-BTN' |
+            translate}}</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup" label="{{'STUDENT-REGISTRATION.SUBTITLE2' | translate}}">
+      <form [formGroup]="secondFormGroup" autocomplete="off">
+        <div class="row">
+          <div class="col-lg-4">
+            <mat-form-field appearance="outline">
+              <mat-label>{{'STUDENT-REGISTRATION.LIST.PREFERENCE' | translate}}</mat-label>
+              <input matInput matTooltip="" [(ngModel)]="userRegistration.preference" [matAutocomplete]="autopreference"
+                [dataList]="filterpreferenceList" formControlName="PrefLang" [autoCompleteDirective]="translateVal"
+                (sendVal)="preferenceList = $event" (datavalue)="userRegistration.preference=$event.id" required>
+              <mat-autocomplete #autopreference="matAutocomplete" [displayWith]="displayfn.bind(this,'Preference')">
+                <mat-option *ngFor="let option of preferenceList" [value]="option.id">
+                  {{option[translateVal]}}
+                </mat-option>
+              </mat-autocomplete>
+              <mat-error *ngIf="validate2.PrefLang.touched || validate2.PrefLang.invalid">
+                {{'SignUp.PrefLAng'|translate}}
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-lg-4">
+            <mat-form-field appearance="outline">
+              <mat-label>{{'STUDENT-REGISTRATION.LIST.EMERGENCY-NAME' | translate}}</mat-label>
+              <input matInput placeholder="Emergency Contact Name" pattern="[a-z A-Z]*"
+                [(ngModel)]="userRegistration.emergency_name" formControlName="EmerContactName" />
+              <mat-error *ngIf="validate2.EmerContactName.touched || validate2.EmerContactName.invalid">
+                {{'SignUp.EmerCName'|translate}}
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-lg-4">
+            <mat-form-field appearance="outline">
+              <mat-label>{{'STUDENT-REGISTRATION.LIST.EMERGENCY-NUMBER' | translate}}</mat-label>
+              <input matInput placeholder="Emergency Contact Number" pattern="[0-9]*" mask="0000000000000"
+                [(ngModel)]="userRegistration.emergency_number" formControlName="EmerContactNum" />
+              <mat-error *ngIf="validate2.EmerContactNum.touched || validate2.EmerContactNum.invalid">
+                {{'SignUp.EmerCNum'|translate}}
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-4">
+            <mat-form-field appearance="outline">
+              <mat-label>{{'STUDENT-REGISTRATION.LIST.USERNAME' | translate}}</mat-label>
+              <input [autocomplete]="false" matInput placeholder="User Name" [(ngModel)]="userRegistration.user_name"
+                formControlName="userName" name="test" required  (blur)="userNameExist()"  />
+              <mat-error *ngIf="validate2.userName.touched || validate2.userName.invalid">
+                {{'SignUp.UserName'|translate}}
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-lg-4">
+            <mat-form-field appearance="outline">
+              <mat-label>{{'STUDENT-REGISTRATION.LIST.PASSWORD' | translate}}</mat-label>
+
+              <input matInput [type]="hide ? 'password' : 'text'" autocomplete="false" formControlName="Password"
+                [(ngModel)]="userRegistration.password" required>
+              <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </button>
+              <mat-hint>{{'SignUp.Hint'|translate}}</mat-hint>
+              <mat-error *ngIf="validate2.Password.touched || validate2.Password.invalid">
+                {{'SignUp.Passwoord'|translate}}
+              </mat-error>
+            </mat-form-field>
+
+          </div>
+        </div>
+        <div class="text-end">
+          <button mat-raised-button color="warm" matStepperPrevious>{{'BUTTON.BACK-BTN' | translate}}</button>
+          <span style="margin-right: 10px"></span>
+          <button mat-raised-button color="primary" matStepperNext>{{'BUTTON.NEXT-BTN' |
+            translate}}</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="thirdFormGroup" >
+      <ng-template matStepLabel>{{'STUDENT-REGISTRATION.SUBTITLE3' | translate}}</ng-template>
+      <form [formGroup]="thirdFormGroup">
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="col-12">
+              <mat-form-field appearance="outline">
+                <mat-label>{{'STUDENT-REGISTRATION.LIST.PHOTO' | translate}}</mat-label>
+                <ngx-mat-file-input formControlName="photo" (change)="onFileChangePhoto($event,'photo')" required>
+                </ngx-mat-file-input>
+                <mat-icon matSuffix class="mat_icon_color">cloud_upload</mat-icon>
+                <mat-error *ngIf="thirdFormGroup.get('photo').hasError('required')">
+                  Upload Photo
+                </mat-error>
+                <mat-error *ngIf="thirdFormGroup.get('photo').hasError('maxContentSize')">
+                  The total size must not exceed 200kb
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="col-12">
+              <mat-form-field appearance="outline">
+                <mat-label>{{'STUDENT-REGISTRATION.LIST.NRIC-FRONT' | translate}}</mat-label>
+                <ngx-mat-file-input formControlName="nric_front" (change)="onFileChangePhoto($event,'nric_front')"
+                [required]="((userRegistration.nric_number?true:false)||(validate3.nric_front.value==''))">
+                </ngx-mat-file-input>
+                <mat-icon matSuffix class="mat_icon_color">cloud_upload</mat-icon>
+                <mat-error *ngIf="thirdFormGroup.get('nric_front').hasError('required')">
+                  Upload Photo
+                </mat-error>
+                <mat-error *ngIf="thirdFormGroup.get('nric_front').hasError('maxContentSize')">
+                  The total size must not exceed 200kb
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="col-12">
+              <mat-form-field appearance="outline">
+                <mat-label>{{'STUDENT-REGISTRATION.LIST.NRIC-REAR' | translate}}</mat-label>
+                <ngx-mat-file-input formControlName="nric_rear" (change)="onFileChangePhoto($event,'nric_rear')"
+                [required]="((userRegistration.nric_number?true:false)||(validate3.nric_rear.value==''))" >
+                </ngx-mat-file-input>
+                <mat-icon matSuffix class="mat_icon_color">cloud_upload</mat-icon>
+                <mat-error *ngIf="thirdFormGroup.get('nric_rear').hasError('required')">
+                  Upload Photo
+                </mat-error>
+                <mat-error *ngIf="thirdFormGroup.get('nric_rear').hasError('maxContentSize')">
+                  The total size must not exceed 200kb
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-4">
+
+            <div class="col-12">
+              <mat-form-field appearance="outline">
+                <mat-label>{{'STUDENT-REGISTRATION.LIST.PASSPORT-FRONT' | translate}}</mat-label>
+                <ngx-mat-file-input formControlName="passport_front"
+                  (change)="onFileChangePhoto($event,'passport_front')"
+                  [required]="(((userRegistration.passport_number?true:false)&&(validate3.passport_front.value==''))||(userRegistration.nricType==5))">
+                </ngx-mat-file-input>
+                <mat-icon matSuffix class="mat_icon_color">cloud_upload</mat-icon>
+                <mat-error *ngIf="thirdFormGroup.get('passport_front').hasError('required')">
+                  Upload Photo
+                </mat-error>
+                <mat-error *ngIf="thirdFormGroup.get('passport_front').hasError('maxContentSize')">
+                  The total size must not exceed 200kb
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="col-12">
+              <mat-form-field appearance="outline">
+                <mat-label>{{'STUDENT-REGISTRATION.LIST.WORK-PERMIT' | translate}}</mat-label>
+                <ngx-mat-file-input formControlName="work_permit"
+                (change)="onFileChangePhoto($event,'work_permit')"
+                [required]="(userRegistration.nricType==5)">
+              </ngx-mat-file-input>
+              <mat-icon matSuffix class="mat_icon_color">cloud_upload</mat-icon>
+              <mat-error *ngIf="thirdFormGroup.get('work_permit').hasError('required')">
+                Upload Photo
+              </mat-error>
+              <mat-error *ngIf="thirdFormGroup.get('work_permit').hasError('maxContentSize')">
+                The total size must not exceed 200kb
+              </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+        <div class="text-end">
+          <button mat-raised-button color="warm" matStepperPrevious>{{'BUTTON.BACK-BTN' | translate}}</button>
+          <span style="margin-right: 10px"></span>
+          <button mat-raised-button color="primary" matStepperNext (click)="save(showStudent)">{{'BUTTON.ADD-BTN' | translate}}</button>
+        </div>
+      </form>
+    </mat-step>
+  </mat-stepper>
+</div>
+<ng-template #showStudent let-modal>
+  <div class="modal-header deleteRowModal">
+  <h4 class="modal-title" id="modal-basic-title"> <div class="modal-header ">
+      <div class="modal-about">
+          <div class="font-weight-bold p-t-10 font-17">
+              {{'STUDENT-REGISTRATION.CONFIRMTITLE' | translate}}</div>
+      </div>
+      </div>
+  </h4>
+  <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true"><i class="material-icons">close</i></span>
+  </button>
+  </div>
+  <div class="modal-body">
+      <h5 style="text-align:center">{{'STUDENT-REGISTRATION.SUBTITLE1' | translate}}</h5>
+          <ul class="clearfix">
+              <li>
+                  <p><span class="font-weight-bold"> <b>{{'STUDENT-REGISTRATION.LIST.NAME' | translate}}:  </b></span><span>{{userRegistration.name}}</span></p>
+              </li>
+              <li>
+                  <p><span class="font-weight-bold"><b> {{'STUDENT-REGISTRATION.LIST.IC-TYPE' | translate}}: </b></span><span>{{nricTYpe}}</span></p>
+              </li>
+              <li>
+                  <p><span class="font-weight-bold"><b>{{'STUDENT-REGISTRATION.LIST.NRIC' | translate}}: </b></span><span>{{userRegistration.nric_number}}</span></p>
+              </li>
+              <li *ngIf="userRegistration.passport_number">
+                  <p><span class="font-weight-bold"><b>{{'STUDENT-REGISTRATION.LIST.PASSPORT' | translate}}: </b></span><span>{{userRegistration.passport_number}}</span></p>
+              </li>
+              <li>
+                  <p><span class="font-weight-bold"><b>{{'STUDENT-REGISTRATION.LIST.DOB' | translate}}: </b></span><span>{{userRegistration.date_of_birth | date:'dd/MM/yyyy'}}</span></p>
+              </li>
+              <li>
+                  <p><span class="font-weight-bold"><b>{{'STUDENT-REGISTRATION.LIST.GENDER' | translate}}: </b></span><span>{{userRegistration.gender}}</span></p>
+              </li>
+              <li>
+                  <p><span class="font-weight-bold"><b>{{'STUDENT-REGISTRATION.LIST.PLACEBIRTH' | translate}}: </b></span><span>{{pob}}</span></p>
+              </li>
+              <li>
+                  <p><span class="font-weight-bold"><b>{{'STUDENT-REGISTRATION.LIST.NATIONALITY' | translate}}: </b></span><span>{{nationality}}</span></p>
+              </li>
+              <li>
+                  <p><span class="font-weight-bold"><b>{{'STUDENT-REGISTRATION.LIST.IC-ADDRESS' | translate}}: </b></span><span>{{userRegistration.ic_address}}</span></p>
+              </li>
+              <li *ngIf="userRegistration.address1">
+                  <p><span class="font-weight-bold"><b>{{'STUDENT-REGISTRATION.LIST.ADDRESS1' | translate}}: </b></span><span>{{userRegistration.address1}}</span></p>
+              </li>
+              <li *ngIf="userRegistration.address2">
+                  <p><span class="font-weight-bold"><b>{{'STUDENT-REGISTRATION.LIST.ADDRESS2' | translate}}: </b></span><span>{{userRegistration.address2}}</span></p>
+              </li>
+              <li>
+                  <p><span class="font-weight-bold"><b>{{'STUDENT-REGISTRATION.LIST.POSTAL-CODE' | translate}}: </b></span><span>{{zip.postal_code}}</span></p>
+              </li>
+              <li>
+                  <p><span class="font-weight-bold"><b>{{'STUDENT-REGISTRATION.LIST.CITY' | translate}}: </b></span><span>{{userRegistration.city}}</span></p>
+              </li>
+              <li>
+                  <p><span class="font-weight-bold"><b>{{'STUDENT-REGISTRATION.LIST.STATE' | translate}}: </b></span><span>{{userRegistration.state}}</span></p>
+              </li>
+              <li>
+                  <p><span class="font-weight-bold"><b>{{'STUDENT-REGISTRATION.LIST.EMAIL' | translate}}: </b></span><span>{{userRegistration.email_address}}</span></p>
+              </li>
+              <li>
+                  <p><span class="font-weight-bold"><b>{{'STUDENT-REGISTRATION.LIST.MOBILENO' | translate}}: </b></span><span>{{userRegistration.mobile_number}}</span></p>
+              </li>
+              <li>
+                  <p><span class="font-weight-bold"><b>{{'STUDENT-REGISTRATION.LIST.RACE' | translate}}: </b></span> <span>{{race}}</span></p>
+              </li>
+              <li  *ngIf="userRegistration.other_race">
+                  <p><span class="font-weight-bold"><b>{{'STUDENT-REGISTRATION.LIST.OTHERRACE' | translate}}: </b></span><span>{{userRegistration.otherRace}}</span></p>
+              </li>
+          </ul>
+          <h5 style="text-align:center">{{'STUDENT-REGISTRATION.SUBTITLE2' | translate}}</h5>
+              <ul class="clearfix">
+                  <li *ngIf="preference">
+                      <p><span class="font-weight-bold"><b> {{'STUDENT-REGISTRATION.LIST.PREFERENCE' | translate}}: </b></span><span>{{preference}}</span></p>
+                  </li>
+                  <li *ngIf="userRegistration.emergency_name">
+                      <p><span class="font-weight-bold"><b> {{'STUDENT-REGISTRATION.LIST.EMERGENCY-NAME' | translate}}: </b></span><span>{{userRegistration.emergency_name}}</span></p>
+                  </li>
+                  <li *ngIf="userRegistration.emergency_number">
+                      <p><span class="font-weight-bold"><b>{{'STUDENT-REGISTRATION.LIST.EMERGENCY-NUMBER' | translate}}: </b></span><span>{{userRegistration.emergency_number}}</span></p>
+                  </li>
+                  <li *ngIf="userRegistration.user_name">
+                      <p><span class="font-weight-bold"><b>{{'STUDENT-REGISTRATION.LIST.USERNAME' | translate}}: </b></span><span>{{userRegistration.user_name}}</span></p>
+                  </li>
+                  <li *ngIf="userRegistration.password">
+                      <p><span class="font-weight-bold"><b>{{'STUDENT-REGISTRATION.LIST.PASSWORD' | translate}}: </b></span><span>{{userRegistration.password}}</span></p>
+                  </li>
+                  <!-- <li *ngIf="existing_license.value[translateVal]">
+                      <p><span class="font-weight-bold"><b>{{'STUDENT-REGISTRATION.LIST.EXISTING-LICENSE' | translate}}: </b></span><span>{{existing_license.value[translateVal]}}</span></p>
+                  </li> -->
+                
+              </ul>
+           
+          </div>
+      <div class="modal-footer">
+      <div class="button-demo">
+          <button mat-raised-button type="submit" color="primary" (click)="setConfirmStudentDetails()">{{'BUTTON.CONFIRM-BTN' | translate}}</button>
+          <button mat-button type="button" (click)="modal.close()">{{'BUTTON.CANCEL-BTN' | translate}}</button>
+      </div>
+      </div>
+</ng-template>

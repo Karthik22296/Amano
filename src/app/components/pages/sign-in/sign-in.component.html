@@ -1,0 +1,97 @@
+<div class="sign-in-area pt-20 pb-20">
+    <div class="container">
+        <div class="user-all-form">
+            <div *ngIf="!forgotPass" class="contact-form">
+                <div class="section-title text-center">
+                    <h2>{{'SIGNIN.HEADING' | translate}}</h2>
+                </div>
+                <form [formGroup]="signIn">
+                    <div class="row">
+                        <div class="col-lg-12 ">
+                            <div class="form-group" style="height: 75px;">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>{{'SIGNIN.USERNAME/PASSWORD' | translate}}</mat-label>
+                                    <input matInput type="text" placeholder="{{'SIGNIN.USERNAME/PASSWORD' | translate}}"
+                                        [(ngModel)]="userName" formControlName="userName" required />
+
+                                    <mat-error *ngIf="validate.userName.touched || validate.userName.invalid">
+                                        {{'signIn.Username'|translate}}
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>{{'SIGNIN.PASSWORD' | translate}}</mat-label>
+                                    <input matInput type="password" placeholder="{{'SIGNIN.PASSWORD' | translate}}"
+                                        [(ngModel)]="password" formControlName="password" required />
+
+                                    <mat-error *ngIf="validate.password.touched || validate.password.invalid">
+                                        {{'signIn.Password'|translate}}
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 col-sm-6 form-condition">
+                            <div class="agree-label">
+
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 col-sm-6">
+                            <a class="forget" (click)="forgotPass=(!forgotPass)">{{'SIGNIN.FORGOTPAASSWORD' |
+                                translate}}</a>
+                        </div>
+
+                        <div class="col-lg-12 col-md-12 text-center">
+                            <button type="submit" (click)="login()" class="default-btn">{{'SIGNIN.SIGNIN' |
+                                translate}}</button>
+                        </div>
+
+                        <div class="col-12">
+                            <p class="account-desc">{{'SIGNIN.NOTMEM' | translate}}? <a
+                                    routerLink="/sign-up">{{'SIGNIN.REGISTER' | translate}}</a></p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div *ngIf="forgotPass" class="contact-form">
+                <div class="section-title text-center">
+                    <h2>{{'ForgotPass.ForgotPass' | translate}}</h2>
+                </div>
+                <form [formGroup]="forgotPasswordForm">
+                    <div class="row">
+                        <div class="col-lg-12 ">
+                            <div class="form-group" style="height: 75px;">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>{{'ForgotPass.EMale' | translate}}</mat-label>
+                                    <input matInput type="email" placeholder="{{'ForgotPass.EMale' | translate}}"
+                                        [(ngModel)]="email" formControlName="email" required />
+                                    <mat-error *ngIf="validate2.email.touched || validate2.email.invalid">
+                                        {{'ForgotPass.Email'|translate}}
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-12 col-md-12 text-center">
+                            <button type="submit" (click)="forgotPassword(email)"
+                                class="default-btn">{{'ForgotPass.Submit' |
+                                translate}}</button>
+                        </div>
+
+                        <div class="col-lg-12 col-md-12 text-center">
+                            <a class="account-desc" (click)="forgotPass=(!forgotPass)">{{'ForgotPass.Back' | translate}}
+                            </a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Sign In Area End -->

@@ -1,0 +1,186 @@
+.timeline-green{
+    background-color: green;
+}
+
+.timeline-orange{
+    background-color: #efd893fc;
+}
+
+.progline-green{
+    content: "";
+    position: absolute;
+    top: 40px;
+    bottom: 0;
+    width: 3px;
+    background: green;
+    left: 20%;
+    margin-left: -6px;
+    height: 70px;
+}
+.progline-orange{
+    content: "";
+    position: absolute;
+    top: 40px;
+    bottom: 0;
+    width: 3px;
+    background: #efd893fc;
+    left: 20%;
+    margin-left: -6px;
+    height: 70px;
+}
+
+.bck-color{
+    background: #caf9be !important;
+}
+
+.bck-right-color{
+    border-right-color: #caf9be !important; 
+    right: 100%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-width: 10px;
+    top: 10px;
+}
+
+.bck-orange-color{
+    border-right-color: #eee !important; 
+    right: 100%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-width: 10px;
+    top: 10px;
+}
+.left-timeline {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    position: relative;
+    &:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: #eee;
+      left: 20%;
+      margin-left: -6px;
+    }
+    > li {
+      position: relative;
+      &:first-child {
+        .left-icon {
+          // background: #fff;
+          color: #666;
+        }
+        .left-time span.large {
+          color: #444;
+          font-size: 17px !important;
+          font-weight: 700;
+        }
+      }
+      &:nth-child(odd) {
+        .left-label {
+          //background: #f0f1f3;
+          &:after {
+           // border-right-color: #f0f1f3;
+          }
+        }
+        .left-time span:last-child {
+          color: #444;
+          font-size: 13px;
+        }
+      }
+      .left-time {
+        display: block;
+        width: 23%;
+        padding-right: 70px;
+        position: absolute;
+        span {
+          display: block;
+          text-align: right;
+          &:first-child {
+            font-size: 15px;
+            color: #3d4c5a;
+            font-weight: 700;
+          }
+          &:last-child {
+            font-size: 14px;
+            color: #444;
+          }
+        }
+      }
+      .left-label {
+        margin: 0 0 15px 25%;
+        background: #f0f1f3;
+        padding: 1.2em;
+        position: relative;
+        //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+        border-radius: 5px;
+      
+        blockquote {
+          font-size: 16px;
+        }
+        .map-checkin {
+          border: 5px solid rgba(235, 235, 235, 0.2);
+          //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+          box-shadow: 0 0 0 1px #ebebeb;
+          background: #fff !important;
+        }
+        h2 {
+          margin: 0;
+          padding: 0 0 10px 0;
+          line-height: 26px;
+          font-size: 16px;
+          font-weight: normal;
+          a {
+            font-size: 15px;
+            &:hover {
+              text-decoration: none;
+            }
+          }
+          span {
+            font-size: 15px;
+          }
+        }
+        p {
+          color: #444;
+        }
+      }
+      .left-icon {
+        width: 40px;
+        height: 40px;
+        speak: none;
+        font-style: normal;
+        font-weight: normal;
+        font-variant: normal;
+        text-transform: none;
+        font-size: 1.4em;
+        line-height: 40px;
+        position: absolute;
+        color: #fff;
+        border-radius: 50%;
+        box-shadow: 0 5px 25px 0 rgba(0, 0, 0, 0.2);
+        text-align: center;
+        left: 20%;
+        top: 0;
+        margin: 0 0 0 -25px;
+        img {
+          border-radius: 50%;
+        }
+      }
+      .empty span {
+        color: #777;
+      }
+    }
+    .mat-input-element:disabled, .mat-form-field-type-mat-native-select.mat-form-field-disabled .mat-form-field-infix::after {
+      color: rgb(86 84 184)!important;
+  }
+  }

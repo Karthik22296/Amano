@@ -1,0 +1,379 @@
+{
+  "MENUITEMS": {
+    "CLIENT": {
+      "TEXT": "qqqqqq"
+    },
+    "USER": {
+      "TEXT": "wwwww"
+    },
+    "HOME": {
+      "TEXT": "papan pemuka"
+    },
+    "LICENSE": {
+      "TEXT": "Lesen",
+      "LIST": {
+        "ALL-LICENSE": "Senarai Lesen",
+        "ADD-LICENSE": "Tambah Lesen"
+      }
+    },
+    "STUDENTS": {
+      "TEXT": "Pelajar",
+      "LIST": {
+        "ALL-STUDENTS": "Senarai Pelajar",
+        "ADD-STUDENT": "Pedaftaran Pelajar"
+      }
+    },
+    "PACKAGE": {
+      "TEXT": "Pakej",
+      "LIST": {
+        "ALL-PACKAGE": "Senarai Pakej",
+        "ADD-PACKAGE": "Tambah Pakej"
+      }
+    },
+    "PRE-REQUISITE": {
+      "TEXT": "Pra-Syarat",
+      "LIST": {
+        "ALL-PRE-REQUISITE": "Senarai Pra-Syarat",
+        "ADD-PRE-REQUISITE": "Tambah Pra-Syarat"
+      }
+    },
+    "EMPLOYEE": {
+      "TEXT": "Pekerja"
+    },
+    "SCHEDULE": {
+      "TEXT": "Jadual",
+      "LIST": {
+        "ALL-SCHEDULE": "Senarai Jadual",
+        "ADD-SCHEDULE": "Tambah Jadual"
+      }
+    },
+    "RETEST": {
+      "TEXT": "Bayaran Ujian Semula"
+    },
+    "MESSAGE-TEMPLATE": {
+      "TEXT": "Templat mesej"
+    },
+    "APPLY": {
+      "TEXT": "Memohon lesen"
+    },
+    "REPORTS": {
+      "TEXT": "Laporan (Repot)",
+      "LIST": {
+        "REVENUE-REPORT": "Laporan Hasil",
+        "REGISTRATION-REPORT": "Laporan Pendaftaran",
+        "SALES-REPORT": "Laporan Jualan"
+      }
+    }
+  },
+  "BUTTON": {
+    "NEXT-BTN": "Seterusnya",
+    "BACK-BTN": "Ke Belakang",
+    "ADD-BTN": "Serah",
+    "EDIT-BTN": "Kemaskini",
+    "CONFIRM-BTN": "Mengesah",
+    "CANCEL-BTN": "Batal",
+    "DEL-BTN": "Padam",
+    "CONFIRMATION": "Adakah Anda Pasti?",
+    "PROCEED-BTN": "Teruskan",
+    "BUY-BTN": "Beli",
+    "EXCEL-BTN": "Excel",
+    "PRINT-BTN": "Cetak",
+    "PDF-BTN": "pdf"
+  },
+  "DASHBOARD": {
+    "TITLE": "papan pemuka",
+    "TOTAL-STUDENTS": "Jumlah Pendaftaran",
+    "TOTAL-REVENUE": "Jumlah Jualan",
+    "REGISTRATION-REPORT": "Laporan Pendaftaran",
+    "SALES-REPORT": "Laporan Jualan",
+    "YESTERDAY": "Semalam",
+    "TODAY": "Hari ini",
+    "MONTH": "Bulan Ini"
+  },
+  "STUDENT-REGISTRATION": {
+    "TITLE": "Pendaftaran Pelajar",
+    "LISTTITLE": "Semua Pelajar",
+    "EDITTITLE": "Kemaskini Pelajar",
+    "SUBTITLE1": "Butir Peribadi",
+    "SUBTITLE2": "Pilihan",
+    "SUBTITLE3": "Muat Naik Dokumen",
+    "SUBTITLE4": "Butir Dokumen",
+    "CONFIRMTITLE": "Pengesahan Butir",
+    "DELETETITLE": "Padam Pelajar",
+    "UPDATESTATUS": "Kemaskini Status",
+    "ACTIONS": "Tindakan",
+    "LIST": {
+      "NAME": "Nama",
+      "IC-TYPE": "Jenis Kad Pengenalan",
+      "NRIC": "No KP",
+      "GENDER": "Jantina",
+      "PASSPORT": "No Passpot",
+      "NATIONALITY": "Warganegara",
+      "PLACEBIRTH": "Tempat Lahir",
+      "IC-ADDRESS": "Alamat di Kad Pengenalan",
+      "ADDRESS1": "Alamat 1",
+      "ADDRESS2": "Alamat 2",
+      "POSTAL-CODE": "Kod Postal",
+      "CITY": "Bandar",
+      "EMAIL": "Emel",
+      "MOBILENO": "No. Telefon Bimbit",
+      "RACE": "Bangsa",
+      "DOB": "Hari Lahir",
+      "OTHERRACE": "Bangsa - Lain-Lain",
+      "STATE": "Negeri",
+      "PREFERENCE": "Bahasa Pilihan",
+      "EMERGENCY-NAME": "Name Kenalan kecemasan",
+      "EMERGENCY-NUMBER": "Nombor hubungan kecemasan",
+      "EXISTING-LICENSE": "Lesen Sedia Ada",
+      "EXPIRYDATE": "Tarkih Luput Lesen",
+      "USERNAME": "Nama Penguna",
+      "PASSWORD": "Kata Laluan",
+      "PHOTO": "Muat Naik Photo",
+      "NRIC-FRONT": "Muka Hadapan NRIC",
+      "NRIC-REAR": "Muka Belakang NRIC",
+      "PASSPORT-FRONT": "Muka Hadapan Passpot",
+      "WORK-PERMIT": "Muka Hadapan Permit kerja",
+      "EXISTING-LICENSE-FRONT": "Muka Hadapan Lesen Sedia ada",
+      "EXISTING-LICENSE-REAR": "Muka Belakang Lesen Sedi ada",
+      "STATUS": "Status"
+    }
+  },
+  "LICENSE": {
+    "TITLE": "Tambah Lesen",
+    "EDITTITLE": "Kemaskinni Lesen",
+    "DELETETITLE": "Padam Lesen",
+    "ACTIONS": "Tindakan",
+    "LIST": {
+      "LICENSE-CLASS": "Kelas Lesen",
+      "MIN-AGE": "Umur Minimum",
+      "LICENSE-ENGLISH": "Butiran Lesen Inggeris",
+      "LICENSE-MALAY": "Butiran Lesen MALAY",
+      "CRITERIA-ENGLISH": "Kriteria in Inggeris",
+      "CRITERIA-MALAY": "Kriteria in Malaysia",
+      "LICENSE-FLOW": "Aliran Lesen",
+      "LICENSE-IMAGE": "Imej Lesen",
+      "CDL-REQ": "Memegang (CDL) sekurang-kurangnya satu tahun?"
+    }
+  },
+  "PACKAGE": {
+    "TITLE": "Tambah Pakej",
+    "LISTTITLE": "Senarai Pakej",
+    "EDITTITLE": "Kemaskini Pakej",
+    "DELETETITLE": "Padam Pakej",
+    "ACTIONS": "Tindakan",
+    "LIST": {
+      "LICENSE-TYPE": "Jenis Lesen",
+      "PACKAGE-TYPE": "Jenis Pakej",
+      "PACKAGE-ENG": "Pakej - Inggeris",
+      "PACKAGE-MALAY": "Pakej - Malaysia",
+      "PACKAGE-DESC-ENG": "Butiran Pakej- Bahasa Inggeris",
+      "PACKAGE-DESC-MALAY": "Butiran Pakej - Bahasa Malaysia",
+      "PACKAGE-IMAGE": "Imej Pakej",
+      "PACKAGE-PRICE": "Harga Pakej",
+      "PROMO-DIS": "Promo Diskaun",
+      "FIANL-PACKAGE-PRICE": "Harga pakej muktamad",
+      "PAYMENT-PHASE": "Fasa Bayaran",
+      "PAYMENT-PHASE-AMT-1": "Jumlah Fasa Bayaran",
+      "PAYMENT-PHASE-AMT-2": "Bayaran Fasa Kedua",
+      "PAYMENT-PHASE-AMT-3": "Bayaran Fasa Ketiga",
+      "PACKAGE-PHASE-DESC-ENG": "Penerangan Fasa Pakej - Bahasa Inggeris",
+      "PACKAGE-PHASE-DESC-MALAY": "Penerangan Fasa Pakej - Bahasa Malaysia",
+      "GLOBAL-VIEW": "Pandangan Global",
+      "AFFORDABLE": "Affordable",
+      "PREMIUM": "Premium"
+    }
+  },
+  "PRE-REQUISITE": {
+    "TITLE": "Tambah Pra-Syarat",
+    "LISTTITLE": "Senarai Pra-Syarat",
+    "EDITTITLE": "Kemaskini Pra-Syarat",
+    "ACTIONS": "Tindakan",
+    "LICENSE-TYPE": "Jenis Lesen",
+    "PRE-REQUISITE-ENG": "Pra-Syarat - Bahasa Inggeris",
+    "PRE-REQUISITE-MALAY": "Pra-Syarat - Bahasa Malaysia",
+    "REQ-DOCUMENT-ENG": "Dokumen yang diperlukan - Bahasa Inggeris",
+    "REQ-DOCUMENT-MALAY": "Dokumen yang diperlukan - Bahasa Malaysia"
+  },
+  "EMPLOYEE": {
+    "TITLE": "Pekerja Baru",
+    "LISTTITLE": "Semua Pekerja",
+    "EDITTITLE": "Kemaskini Pekerja",
+    "DELETETITLE": "Padam Pekerja",
+    "ACTIONS": "Tindakan",
+    "LIST": {
+      "ROLE": "Peranan",
+      "NAME": "Nama",
+      "USERNAME": "Nama Penguna",
+      "PASSWORD": "Kata Laluan",
+      "MOBILENO": "No. Telefon Bimbit",
+      "EMAILID": "Emel",
+      "PROFILE-IMG": "Imej Profil"
+    }
+  },
+  "SCHEDULE": {
+    "TITLE": "Jadual",
+    "LICENCE": "Lesen",
+    "TRANSACTIONNUMBER": "No. Pendaftaran",
+    "LIST": {
+      "SCHEDULE": "Jadual",
+      "LEAD-TIME": "Tentukan Jadual Masa (Hari)",
+      "SCHEDULE-VIEW": "Paparan Jadual",
+      "ASSIGNMENT": "tugasan paparan jadual",
+      "START-DATE": "Tarikh Mula",
+      "END-DATE": "Tarikh Tamat"
+    }
+  },
+  "RETEST-PAYMENT": {
+    "TITLE": "Tambah Bayaran Ujian Semula",
+    "LISTTITLE": "Semua Bayaran Untuk Ujian Semula",
+    "EDITTITLE": "Kemaskini Bayaran Ujian Semula",
+    "RETEST-TYPE": "jenis ujian semula",
+    "RETEST-AMOUNT": "jumlah bayaran ujian semula"
+  },
+  "MESSAGE": {
+    "TITLE": "Reka mesej",
+    "LISTTITLE": "Semua Mesej",
+    "EDITTITLE": "kemaskini Mesej",
+    "DELETETITLE": "Padam Mesej",
+    "ACTION": "Tindakan",
+    "LIST": {
+      "MESSAGE-TYPE": "Padam Mesej",
+      "MESSAGE-ENG": "Mesej dalan Bahasa Inggeris",
+      "MESSAGE-MALAY": "Mesej dalam Bahasa Malaysia"
+    }
+  },
+  "SELECT-LICENSE": {
+    "TITLE": "Pilih Lesen",
+    "ACTION": "Tindakan",
+    "LIST": {
+      "NRIC-NUMBER": "No KP",
+      "PASSPORT-NUMBER": "No Passpot",
+      "EXISTING-LICENSE": "Lesen Sedia Ada",
+      "EXPIRYDATE": "Tarkih Luput Lesen",
+      "EXISTING-LICENSE-FRONT": "Muka Hadapan Lesen Sedia ada",
+      "EXISTING-LICENSE-REAR": "Muka Belakang Lesen Sedi ada",
+      "CDL-LICENSE": "Memegang (CDL) sekurang-kurangnya satu tahun?",
+      "CDL-YES": "Ya",
+      "CDL-NO": "Tidak"
+    }
+  },
+  "SELECT-PACKAGE": {
+    "TITLE": "Pilih Pakej"
+  },
+  "REGISTRATION-REPORT": {
+    "TITLE": "Laporan Pendaftaran",
+    "LIST": {
+      "FROMDATE": "Dari Tarikh",
+      "TODATE": "Ke Tarikh"
+    }
+  },
+  "REVENUE-REPORT": {
+    "TITLE": "Laporan Hasil",
+    "LIST": {
+      "FROMDATE": "Dari Tarikh",
+      "TODATE": "Ke Tarikh",
+      "STUDENT-NAME": "Nama Pelajar",
+      "TRAN-NO": "Nombor Transaksi",
+      "PACKAGE": "Pakej",
+      "PACKAGE-TYPE": "Fasa Bayaran",
+      "PACKAGE-AMOUNT": "jumlah bayaran Pakej",
+      "PAYMENT-STATUS": "Status Bayaran",
+      "AMOUNT-PAID": "Jumlah Di Bayar",
+      "STATUS": "Status"
+    }
+  },
+  "SALES-REPORT": {
+    "TITLE": "Laporan Jualan",
+    "LIST": {
+      "STUDENT-NAME": "Nama Pelajar",
+      "NRIC": "No KP",
+      "PASSPORT": "No Passpot",
+      "TRAN-NO": "Nombor Transaksi",
+      "PACKAGE": "Pakej",
+      "PAYMENT-PHASE": "Fasa Bayaran",
+      "AMOUNT-PAID": "Jumlah Di Bayar"
+    }
+  },
+  "TIMELINE": {
+    "TITLE": "garis masa"
+  },
+  "NAV": {
+    "HOME": "Halaman Utama",
+    "ABOUTUS": "Tentang Kami",
+    "SIGNIN": "Log Masuk",
+    "REGISTER": "Daftar",
+    "LICENCE": "Lesen",
+    "CONTACT": "Hubung Kami",
+    "POLICIES": "Polisi",
+    "TERMS": "Terma & Syarat",
+    "CANCELATION": "Polisi Pembatalan and Bayaran Baliik",
+    "SCHEDULE": "Jadual",
+    "LOGOUT": "Log Keluar",
+    "TIMELINE": "Garis Masa"
+  },
+  "SIGNIN": {
+    "HEADING": "Log masuk ke Akaun Anda!",
+    "USERNAME/PASSWORD": "Nama pengguna",
+    "PASSWORD": "Kata laluan",
+    "REMEMBERME": "ingat saya",
+    "FORGOTPAASSWORD": "Lupa Kata Laluan?",
+    "NOTMEM": "Bukan ahli?",
+    "REGISTER": "Sila Daftar",
+    "SIGNIN": "Log Masuk Sekarang"
+  },
+  "licence2": {
+    "AGELIMIT": "Had umur",
+    "PROCEED": "Teruskan"
+  },
+  "SignUp":{
+    "Name":"Masukkan nama anda",
+    "NricType":"Masukkan Jenis KP",
+    "NricNum":"Masukkan nombor KP",
+    "PassportNum":"Masukkan nombor Paspot",
+    "Dob":"Masukkan Tarikh Lahir",
+    "Gender":"Masukkan Jantina",
+    "POB":"Masukkan Tempat Lahir",
+    "Nationality":"Masukkan Warganegara",
+    "NricAdd":"Masukkan Alamat dalam NRIC",
+    "PostalCode":"Masukkan Kod Postal",
+    "City":"Masukkan Bandar",
+    "State":"Masukkan Negeri",
+    "Email":"Masukkan E-mel Sah",
+    "Mob":"Masukkan Nombor Mudah Alih",
+    "Race":"Pilih Bangsa",
+    "PrefLAng":"Masukkan Bahasa Pilihan",
+    "EmerCName":"Masukkan Nama Hubungan Kecemasan yang Sah",
+    "EmerCNum":"Masukkan Nombor Hubungan Kecemasan yang Sah",
+    "UserName":"Masukkan Nama Pengguna",
+    "Passwoord":"Masukkan Kata Laluan",
+    "NricFImg":"Masukkan Imej Depan KP",
+    "NricRImg":"Masukkan Imej Belakang KP",
+    "PasFImg":"Masukkan Imej Pasport",
+    "PassRImg":"",
+    "Img":"Muat naik Foto",
+    "Hint":"Tidak Kurang dari 8 Aksara, Gabugan Huruf Besar dan Kecil dan sekurang-kurangnya 1 angka",
+    "Subject":"subjek",
+    "Message":"mesej",
+    "subject":"Masukkan Subject",
+    "message":"Masukkan Message"
+  },
+  "signIn":{
+    "Username":"Masukkan Nama Pengguna",
+    "Password":"Masukkan Kata Laluan"
+  },
+  
+  "ForgotPass": {
+    "ForgotPass": "Lupa Kata Laluan?",
+    "EMale": " E-mel ",
+    "Email": "Masukkan E-mel Sah",
+    "Submit": "Hantar e-mel tetapan semula kata laluan",
+    "Back":"Sudah menjadi ahli?? Log masuk"
+  },
+  "ResetPass":{
+    "Header":"Menetapkan semula kata laluan",
+    "NewPass":"Masukkan kata laluan baru",
+    "RePass":"Masukkan Semula Kata Laluan",
+    "PassMiss":"kata laluan mesti sepadan",
+    "Hint":"Tidak Kurang dari 8 Aksara, Gabugan Huruf Besar dan Kecil dan sekurang-kurangnya 1 angka"
+  }
+}

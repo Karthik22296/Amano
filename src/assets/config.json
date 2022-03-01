@@ -1,0 +1,10 @@
+{
+    "apiUrl" : "https://kanaga.my:9443/",
+    "env":"test",
+    "apiToken3111" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VydG9rZW4iOiJDTEktMTAxMiIsImlhdCI6MTYzODg5NDk2OH0.8zxNg_cS2x4HjaxoBE89tz5dLzJiJRLwdaNnWTjDztg",
+    "apiToken" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VydG9rZW4iOiJDTEktMiIsImlhdCI6MTY0Mjc4NDIxOH0.1XlNYR56FQ9ReOcdAEHuRyk3cNbXv_h0ZsriqxkT7OI"
+    
+
+}
+
+
