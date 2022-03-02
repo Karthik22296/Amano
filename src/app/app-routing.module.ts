@@ -14,6 +14,7 @@ import { AuthGuard } from './services/auth.guard';
 import { TimelineComponent } from './components/pages/timeline/timeline.component';
 import { AddScheduleComponent } from './components/pages/schedule/add-schedule/add-schedule.component';
 import { ResetPasswordComponent } from './components/common/reset-password/reset-password.component';
+import { PrivacyPolicyComponent } from './components/pages/privacyPolicy/privacy-policy.component';
 
 const routes: Routes = [
     { path: '', component: HomeOneComponent },
@@ -23,6 +24,7 @@ const routes: Routes = [
     { path: 'sign-up', component: SignUpComponent },
     { path: 'terms-conditions', component: TermsConditionsComponent },
     { path: 'cancellation-policy', component: CancellationPolicyComponent },
+    { path: 'privacy-policy', component: PrivacyPolicyComponent },
     { path: 'contact', component: ContactComponent },
     { path: 'license', component: LicenseComponent },
     { path: 'license-2', component: LicenseTwoComponent, canActivate: [AuthGuard] },

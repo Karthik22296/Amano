@@ -23,6 +23,7 @@ import timeGridPlugin from "@fullcalendar/timegrid";
 import listPlugin from "@fullcalendar/list";
 import { UpdateStatusComponent } from './pages/schedule/update-status/update-status.component';
 
+
 export const config: FileInputConfig = {
   sizeUnit: 'Octet',
 };

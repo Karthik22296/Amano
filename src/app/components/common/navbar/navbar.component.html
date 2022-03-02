@@ -26,13 +26,16 @@
             <div class="col-lg-3 col-md-12">
                 <div class="header-right">
                     <div *ngIf="loggedIn" class="header-right logoutClick xsLogout">
-                        <a (click)="logOut()"> <mat-icon>power_settings_new</mat-icon></a>
+                        <a (click)="logOut()">
+                            <mat-icon>power_settings_new</mat-icon>
+                        </a>
                     </div>
                     <div class="top-social-link">
                         <ul>
                             <li><a href="https://www.facebook.com/sekolahmemanduamano" target="_blank"><i
                                         class='bx bxl-facebook'></i></a></li>
-                            <li><a href="https://www.instagram.com/amano_driving_school/?hl=en" target="_blank"><i class='bx bxl-instagram'></i></a></li>
+                            <li><a href="https://www.instagram.com/amano_driving_school/?hl=en" target="_blank"><i
+                                        class='bx bxl-instagram'></i></a></li>
                         </ul>
                     </div>
 
@@ -56,8 +59,8 @@
 <div class="navbar-area">
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light bg-light" [class.active]="classApplied">
-            <a class="navbar-brand"><img height="51px"
-                    src="assets/img/Amano_Original_Logo-Revised ver 1.00.png" alt="Logo"></a>
+            <a class="navbar-brand"><img height="51px" src="assets/img/Amano_Original_Logo-Revised ver 1.00.png"
+                    alt="Logo"></a>
             <button class="navbar-toggler" type="button" (click)="toggleClass()">
                 <span class="burger-menu">
                     <span class="top-bar"></span>
@@ -93,7 +96,8 @@
                     <li class="nav-item"><a routerLink="/contact" class="nav-link" routerLinkActive="active"
                             [routerLinkActiveOptions]="{exact: true}">{{'NAV.CONTACT' |
                             translate}}</a></li>
-                    <li class="nav-item"><a href="javascript:void(0)" class="nav-link dropdown-toggle">{{'NAV.POLICIES' |
+                    <li class="nav-item"><a href="javascript:void(0)" class="nav-link dropdown-toggle">{{'NAV.POLICIES'
+                            |
                             translate}} <i class='bx bx-chevron-down'></i></a>
                         <ul class="dropdown-menu">
 
@@ -101,50 +105,56 @@
                                     routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">{{'NAV.TERMS' |
                                     translate}}</a></li>
                             <li class="nav-item"><a routerLink="/cancellation-policy" class="nav-link"
-                                    routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">{{'NAV.CANCELATION' |
+                                    routerLinkActive="active"
+                                    [routerLinkActiveOptions]="{exact: true}">{{'NAV.CANCELATION' |
                                     translate}}</a></li>
+                            <li class="nav-item"><a routerLink="/privacy-policy" class="nav-link"
+                                    routerLinkActive="active"
+                                    [routerLinkActiveOptions]="{exact: true}">Privacy Policy</a></li>
                         </ul>
                     </li>
                 </ul>
                 <ul class="navbar-nav for-responsive">
                     <li class="nav-item"><a routerLink="/" class="nav-link" routerLinkActive="active"
-                        [routerLinkActiveOptions]="{exact: true}">{{'NAV.HOME' | translate}}</a>
-                </li>
-                <li class="nav-item"><a routerLink="/about" class="nav-link" routerLinkActive="active"
-                        [routerLinkActiveOptions]="{exact: true}">{{'NAV.ABOUTUS' | translate}}</a></li>
-                <li class="nav-item" *ngIf="!loggedIn"><a routerLink="/sign-in" class="nav-link"
-                        routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">{{'NAV.SIGNIN' |
-                        translate}}</a></li>
-                <li class="nav-item" *ngIf="!loggedIn"><a routerLink="/sign-up" class="nav-link"
-                        routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">{{'NAV.REGISTER' |
-                        translate}}</a></li>
-                <li class="nav-item" *ngIf="!loggedIn"><a routerLink="/license" class="nav-link"
-                        routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">{{'NAV.LICENCE' |
-                        translate}}</a></li>
-                <li class="nav-item" *ngIf="loggedIn"><a routerLink="/license-2" class="nav-link"
-                        routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">{{'NAV.LICENCE' |
-                        translate}}</a></li>
-                <li class="nav-item" *ngIf="loggedIn"><a routerLink="/timeline" class="nav-link"
-                        routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">{{'NAV.TIMELINE' |
-                        translate}}</a></li>
-                <li class="nav-item" *ngIf="loggedIn"><a routerLink="/schedule-list" class="nav-link"
-                        routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">{{'NAV.SCHEDULE' |
-                        translate}}</a></li>
-                <li class="nav-item"><a routerLink="/contact" class="nav-link" routerLinkActive="active"
-                        [routerLinkActiveOptions]="{exact: true}">{{'NAV.CONTACT' |
-                        translate}}</a></li>
-                <li class="nav-item"><a href="javascript:void(0)" class="nav-link dropdown-toggle">{{'NAV.POLICIES' |
-                        translate}} <i class='bx bx-chevron-down'></i></a>
-                    <ul class="dropdown-menu">
+                            [routerLinkActiveOptions]="{exact: true}">{{'NAV.HOME' | translate}}</a>
+                    </li>
+                    <li class="nav-item"><a routerLink="/about" class="nav-link" routerLinkActive="active"
+                            [routerLinkActiveOptions]="{exact: true}">{{'NAV.ABOUTUS' | translate}}</a></li>
+                    <li class="nav-item" *ngIf="!loggedIn"><a routerLink="/sign-in" class="nav-link"
+                            routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">{{'NAV.SIGNIN' |
+                            translate}}</a></li>
+                    <li class="nav-item" *ngIf="!loggedIn"><a routerLink="/sign-up" class="nav-link"
+                            routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">{{'NAV.REGISTER' |
+                            translate}}</a></li>
+                    <li class="nav-item" *ngIf="!loggedIn"><a routerLink="/license" class="nav-link"
+                            routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">{{'NAV.LICENCE' |
+                            translate}}</a></li>
+                    <li class="nav-item" *ngIf="loggedIn"><a routerLink="/license-2" class="nav-link"
+                            routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">{{'NAV.LICENCE' |
+                            translate}}</a></li>
+                    <li class="nav-item" *ngIf="loggedIn"><a routerLink="/timeline" class="nav-link"
+                            routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">{{'NAV.TIMELINE' |
+                            translate}}</a></li>
+                    <li class="nav-item" *ngIf="loggedIn"><a routerLink="/schedule-list" class="nav-link"
+                            routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">{{'NAV.SCHEDULE' |
+                            translate}}</a></li>
+                    <li class="nav-item"><a routerLink="/contact" class="nav-link" routerLinkActive="active"
+                            [routerLinkActiveOptions]="{exact: true}">{{'NAV.CONTACT' |
+                            translate}}</a></li>
+                    <li class="nav-item"><a href="javascript:void(0)" class="nav-link dropdown-toggle">{{'NAV.POLICIES'
+                            |
+                            translate}} <i class='bx bx-chevron-down'></i></a>
+                        <ul class="dropdown-menu">
 
-                        <li class="nav-item"><a routerLink="/terms-conditions" class="nav-link"
-                                routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">{{'NAV.TERMS' |
-                                translate}}</a></li>
-                        <li class="nav-item"><a routerLink="/cancellation-policy" class="nav-link"
-                                routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">{{'NAV.CANCELATION' |
-                                translate}}</a></li>
-                    </ul>
-                </li>
+                            <li class="nav-item"><a routerLink="/terms-conditions" class="nav-link"
+                                    routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">{{'NAV.TERMS' |
+                                    translate}}</a></li>
+                            <li class="nav-item"><a routerLink="/cancellation-policy" class="nav-link"
+                                    routerLinkActive="active"
+                                    [routerLinkActiveOptions]="{exact: true}">{{'NAV.CANCELATION' |
+                                    translate}}</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </nav>

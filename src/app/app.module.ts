@@ -29,6 +29,7 @@ import { AddScheduleComponent } from './components/pages/schedule/add-schedule/a
 import { LoaderComponent } from './components/common/loader/loader.component';
 import { ResetPasswordComponent } from './components/common/reset-password/reset-password.component';
 import { JwtInterceptor } from './services/jwt.interceptor';
+import { PrivacyPolicyComponent } from './components/pages/privacyPolicy/privacy-policy.component';
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient, './assets/i18n/', '.json');
@@ -56,6 +57,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     AddScheduleComponent,
     LoaderComponent,
     ResetPasswordComponent,
+    PrivacyPolicyComponent
   ],
   imports: [
     BrowserModule,
